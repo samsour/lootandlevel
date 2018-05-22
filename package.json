@@ -34,6 +34,7 @@
     "yargs": "^11.0.0"
   },
   "dependencies": {
-    "jquery": "^3.3.1"
+    "jquery": "^3.3.1",
+    "phaser": "^3.8.0"
   }
 }
