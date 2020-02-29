@@ -1,40 +1,20 @@
 {
-  "name": "es6-setup",
+  "name": "lootandlevel-headless-phaser",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Loot and level game",
+  "repository": "http://github.com/samsour/lootandlevel",
+  "main": "server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gulp",
-    "build": "gulp build",
-    "build:production": "gulp build --production"
+    "start": "node server/index.js"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "@babel/core": "^7.0.0-beta.39",
-    "@babel/preset-env": "^7.0.0-beta.39",
-    "babel-loader": "^7.1.2",
-    "babel-polyfill": "^6.26.0",
-    "babel-register": "^7.0.0-beta.3",
-    "browser-sync": "^2.10.0",
-    "gulp": "^4.0.0",
-    "gulp-autoprefixer": "^3.1.0",
-    "gulp-htmlmin": "^4.0.0",
-    "gulp-if": "^2.0.2",
-    "gulp-imagemin": "^4.1.0",
-    "gulp-load-plugins": "^1.1.0",
-    "gulp-sass": "^2.1.0",
-    "gulp-sourcemaps": "^1.5.2",
-    "js-yaml": "^3.4.6",
-    "rimraf": "^2.6.2",
-    "vinyl-named": "^1.1.0",
-    "webpack": "^3.10.0",
-    "webpack-stream": "^3.2.0",
-    "yargs": "^11.0.0"
-  },
   "dependencies": {
-    "jquery": "^3.3.1",
-    "phaser": "^3.8.0"
+    "canvas": "^2.6.1",
+    "express": "^4.17.1",
+    "jsdom": "^13.2.0",
+    "socket.io": "^2.3.0"
   }
 }
