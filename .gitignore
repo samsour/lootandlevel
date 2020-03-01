@@ -7,3 +7,4 @@ npm-debug.log
 *.trace
 **/*.png
 stats.json
+.DS_Store
