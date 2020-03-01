@@ -7,19 +7,19 @@
   "description": "An HTML5 multiplayer game based on Lance",
   "main": "src/main.js",
   "dependencies": {
-    "@babel/node": "^7.2.2",
-    "babel-loader": "^8.0.5",
-    "express": "^4.14.0",
-    "lance-gg": "^4.0.3",
-    "query-string": "^4.2.3",
-    "socket.io": "^2.1.1",
-    "webpack": "^3.8.1"
+    "@babel/node": "^7.8.4",
+    "babel-loader": "^8.0.6",
+    "express": "^4.17.1",
+    "lance-gg": "^4.0.8",
+    "query-string": "^4.3.4",
+    "socket.io": "^2.3.0",
+    "webpack": "^3.12.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.3.4",
-    "@babel/preset-env": "^7.3.4",
-    "eslint": "^3.16.1",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.6",
+    "@babel/preset-env": "^7.8.6",
+    "eslint": "^3.19.0",
     "eslint-config-google": "^0.7.1"
   },
   "scripts": {
