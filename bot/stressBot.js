@@ -57,7 +57,7 @@ var loop = function() {
                     a: randomBool(),
                     s: randomBool(),
                     d: randomBool(),
-                    rotation: Math.random() * Math.PI * 2,
+                    rotation: 0,
                     delta: 1 / 60
                 }
             }
