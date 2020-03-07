@@ -4,6 +4,7 @@ import Identity from './message/Identity'
 import WeaponFired from './message/WeaponFired'
 import MoveCommand from './command/MoveCommand'
 import FireCommand from './command/FireCommand'
+import SpecialFireCommand from './command/SpecialFireCommand'
 import Obstacle from './entity/Obstacle'
 
 const config = {
@@ -30,7 +31,8 @@ const config = {
         ],
         commands: [
             ['MoveCommand', MoveCommand],
-            ['FireCommand', FireCommand]
+            ['FireCommand', FireCommand],
+            ['SpecialFireCommand', SpecialFireCommand]
         ],
         basics: []
     }

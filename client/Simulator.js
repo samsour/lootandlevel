@@ -4,6 +4,7 @@ import Obstacle from '../common/entity/Obstacle'
 import InputSystem from './InputSystem'
 import MoveCommand from '../common/command/MoveCommand'
 import FireCommand from '../common/command/FireCommand'
+import SpecialFireCommand from '../common/command/SpecialFireCommand'
 
 // ignoring certain data from the sever b/c we will be predicting these properties on the client
 const ignoreProps = ['x', 'y', 'rotation']
@@ -127,7 +128,14 @@ class Simulator {
 
     simulateShot(x, y, tx, ty) {
         // TODO: simulate impact against entities/terrain
+        console.log("Regular shot")
+
         this.renderer.drawHitscan(x, y, tx, ty, 0xffffff)
+    }
+
+    simulateSpecial(x, y, tx, ty){
+        console.log("Special shot")
+        this.renderer.drawHitscan(x, y, tx, ty, 0xff0000)
     }
 
     update(delta) {
@@ -167,11 +175,23 @@ class Simulator {
 
             // shooting
             this.myRawEntity.weaponSystem.update(delta)
+
+
+            if(input.space){
+                console.log("space")
+                if (this.myRawEntity.fire()) {
+                    this.client.addCommand(new SpecialFireCommand(worldCoord.x, worldCoord.y))
+                    this.simulateSpecial(this.myRawEntity.x, this.myRawEntity.y, worldCoord.x, worldCoord.y)
+                }
+            }
+
             if (input.mouseDown) {
+                console.log("mouseDown")
                 if (this.myRawEntity.fire()) {
                     this.client.addCommand(new FireCommand(worldCoord.x, worldCoord.y))
                     this.simulateShot(this.myRawEntity.x, this.myRawEntity.y, worldCoord.x, worldCoord.y)
                 }
+            
             }
         }
 

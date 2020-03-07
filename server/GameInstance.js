@@ -137,13 +137,30 @@ class GameInstance {
 
                         this.lagCompensatedHitscanCheck(rawEntity.x, rawEntity.y, command.x, command.y, timeAgo, (victim) => {
                             if (victim.nid !== rawEntity.nid && victim.nid !== smoothEntity.nid) {
-                                damagePlayer(victim)
+                                damagePlayer(victim, 25)
                             }
                         })
 
                         this.instance.addLocalMessage(new WeaponFired(smoothEntity.nid, smoothEntity.x, smoothEntity.y, command.x, command.y))
                     }
                 }
+                
+                if (command.protocol.name === 'SpecialFireCommand') {
+
+                    if (rawEntity.fire()) {            
+                        const timeAgo = client.latency + 100
+
+                        this.lagCompensatedHitscanCheck(rawEntity.x, rawEntity.y, command.x, command.y, timeAgo, (victim) => {
+                            if (victim.nid !== rawEntity.nid && victim.nid !== smoothEntity.nid) {
+                                damagePlayer(victim, 1000)
+                            }
+                        })
+
+                        this.instance.addLocalMessage(new WeaponFired(smoothEntity.nid, smoothEntity.x, smoothEntity.y, command.x, command.y))
+                    }
+                }
+
+
             }
         } 
 

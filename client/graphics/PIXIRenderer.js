@@ -92,6 +92,7 @@ class PIXIRenderer {
         }
     }
 
+
     drawHitscan(x, y, targetX, targetY, color) {
         let graphics = new PIXI.Graphics()
         graphics.lineStyle(1, color)

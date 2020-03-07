@@ -9,6 +9,7 @@ class InputSystem {
             a: false,
             d: false,
             r: false,
+            space: false,
             mx: 0,
             my: 0,
             mouseDown: false
@@ -20,6 +21,7 @@ class InputSystem {
             a: false,
             d: false,
             r: false,
+            space: false,
             mouseDown: false,
             justReleasedR: false
         }
@@ -52,6 +54,12 @@ class InputSystem {
                 this.frameState.d = true
             }
 
+            // space
+            if (event.keyCode === 32) {
+                this.currentState.space = true
+                this.frameState.space = true
+            }
+
             // r
             if (event.keyCode === 82) {
                 this.currentState.r = true
@@ -72,6 +80,11 @@ class InputSystem {
             }
             if (event.keyCode === 68 || event.keyCode === 39) {
                 this.currentState.d = false
+            }
+            
+            if (event.keyCode === 32) {
+                this.currentState.space = false
+                this.frameState.space = false
             }
 
             if (event.keyCode === 82) {
@@ -108,6 +121,7 @@ class InputSystem {
         this.frameState.s = this.currentState.s
         this.frameState.d = this.currentState.d
         this.frameState.r = this.currentState.r
+        this.frameState.space = this.currentState.space
         this.frameState.mouseDown = this.currentState.mouseDown
         this.frameState.justReleasedR = false
     }
