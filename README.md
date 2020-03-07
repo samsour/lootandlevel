@@ -22,6 +22,11 @@ npm start
 # visit http://localhost:8080
 ```
 
+```sh
+# Generate class diagram
+npx arkit
+```
+
 The controls are
 - arrowkeys or...
 - w - up
