@@ -139,7 +139,7 @@ class Simulator {
         if (this.myRawEntity) {
             const dx = worldCoord.x - this.myRawEntity.x
             const dy = worldCoord.y - this.myRawEntity.y
-            rotation = Math.atan2(dy, dx)
+            // rotation = Math.atan2(dy, dx)
         }
 
 

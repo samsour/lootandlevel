@@ -6,11 +6,12 @@ import Obstacle from './Obstacle'
 class PIXIRenderer {
     constructor(input, sounds) {
         this.canvas = document.getElementById('main-canvas')
-
         this.masterScale = 1
         this.myEntity = null
         this.entities = new Map()
-
+        
+        PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST
+        
         this.renderer = PIXI.autoDetectRenderer({
             width: window.innerWidth, 
             height: window.innerHeight, 
