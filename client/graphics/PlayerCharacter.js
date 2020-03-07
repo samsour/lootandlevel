@@ -17,22 +17,21 @@ class PlayerCharacter extends PIXI.Container {
         this._hitpoints = 0
         this.hitpoints = entity.hitpoints
         this.rotation = entity.rotation
+        this.direction = entity.direction
 
-        this.body = new PIXI.Graphics()
-        this.body.beginFill(0xffffff)
-        this.body.drawCircle(0, 0, 25)
-        this.body.endFill()
+        this.body = new PIXI.Sprite.from('images/player.png')
+        this.body.width = 100;
+        this.body.height = 100;
+        this.body.anchor.set(0.5, 0.75  );
+
+
+        // this.body = new PIXI.Graphics()
+        // this.body.beginFill(0xffffff)
+        // this.body.drawCircle(0, 0, 25)
+        // this.body.endFill()
 
         this.body.tint = 0xff0000
-
-        this.nose = new PIXI.Graphics()
-        this.nose.beginFill(0xffffff)
-        this.nose.moveTo(0, -25)
-        this.nose.lineTo(40, 0)
-        this.nose.lineTo(0, 25)
-        this.nose.endFill()
         
-        this.addChild(this.nose)
         this.addChild(this.body)
 
         this.addChild(this.hitpointBar)
@@ -47,15 +46,9 @@ class PlayerCharacter extends PIXI.Container {
         console.log('trying to hide')
         this.body.visible = false
         this.hitpointBar.visible = false
-        this.nose.visible = false
     }
 
-    update(delta) {
-        if (!this.isAlive) {
-            this.nose.alpha = 0
-        } else {
-            this.nose.alpha = 1
-        }
+    update(delta) { 
     }
 }
 
