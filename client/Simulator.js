@@ -142,11 +142,17 @@ class Simulator {
         const input = this.input.frameState
 
         let rotation = 0
+        let direction = 0;
         const worldCoord = this.renderer.toWorldCoordinates(this.input.currentState.mx, this.input.currentState.my)
 
         if (this.myRawEntity) {
             const dx = worldCoord.x - this.myRawEntity.x
-            const dy = worldCoord.y - this.myRawEntity.y
+            // const dy = worldCoord.y - this.myRawEntity.y
+            if (dx > 0) {
+                direction = 1;                
+            } else if (dx < 0) {
+                direction = -1;
+            }
             // rotation = Math.atan2(dy, dx)
         }
 
@@ -170,7 +176,7 @@ class Simulator {
             this.client.addCustomPrediction(this.client.tick, prediction, ['x', 'y'])
 
             const entity = this.myRawEntity
-            this.renderer.move(entity.nid, entity.x, entity.y, rotation)
+            this.renderer.move(entity.nid, entity.x, entity.y, rotation, direction)
             this.renderer.centerCamera(entity)
 
             // shooting

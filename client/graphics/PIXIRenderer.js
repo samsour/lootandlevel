@@ -133,11 +133,12 @@ class PIXIRenderer {
         }
     }
 
-    move(nid, x, y, rotation) {
+    move(nid, x, y, rotation, direction) {
         const entity = this.entities.get(nid)
         entity.x = x
         entity.y = y
         entity.rotation = rotation
+        entity.direction = direction
     }
 
 
