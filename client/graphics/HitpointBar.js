@@ -25,7 +25,7 @@ class HitpointBar extends PIXI.Container {
     }
 
     setHitpointPercentage(percent) {
-        this.foreground.scale.y = percent
+        this.foreground.scale.x = percent
     }
 
 }
