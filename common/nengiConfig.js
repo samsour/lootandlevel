@@ -8,7 +8,7 @@ import SpecialFireCommand from './command/SpecialFireCommand'
 import Obstacle from './entity/Obstacle'
 
 const config = {
-    UPDATE_RATE: 20, 
+    UPDATE_RATE: 30, 
 
     ID_BINARY_TYPE: nengi.UInt16,
     TYPE_BINARY_TYPE: nengi.UInt8, 
