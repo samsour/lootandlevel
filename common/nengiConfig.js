@@ -1,14 +1,12 @@
 import nengi from 'nengi'
-import PlayerCharacter from './entity/PlayerCharacter'
-import Identity from './message/Identity'
-import WeaponFired from './message/WeaponFired'
-import MoveCommand from './command/MoveCommand'
-import FireCommand from './command/FireCommand'
-import SpecialFireCommand from './command/SpecialFireCommand'
-import Obstacle from './entity/Obstacle'
+import NetLog from './NetLog.js'
+import PlayerCharacter from './PlayerCharacter.js'
+import Asteroid from './Asteroid.js'
+import PlayerInput from './PlayerInput.js'
+import Identity from './Identity.js'
 
 const config = {
-    UPDATE_RATE: 30, 
+    UPDATE_RATE: 20, 
 
     ID_BINARY_TYPE: nengi.UInt16,
     TYPE_BINARY_TYPE: nengi.UInt8, 
@@ -22,17 +20,15 @@ const config = {
     protocols: {
         entities: [
             ['PlayerCharacter', PlayerCharacter],
-            ['Obstacle', Obstacle]
+            ['Asteroid', Asteroid]
         ],
         localMessages: [],
         messages: [
-            ['Identity', Identity],
-            ['WeaponFired', WeaponFired]
+            ['NetLog', NetLog],
+            ['Identity', Identity]
         ],
         commands: [
-            ['MoveCommand', MoveCommand],
-            ['FireCommand', FireCommand],
-            ['SpecialFireCommand', SpecialFireCommand]
+            ['PlayerInput', PlayerInput]
         ],
         basics: []
     }
