@@ -1,55 +1,57 @@
 import nengi from 'nengi'
-import nengiConfig from '../common/nengiConfig'
-import Simulator from './Simulator'
+import nengiConfig from '../common/nengiConfig.js'
+import clientHookAPI from './clientHookAPI.js'
+import createHooks from './hooks/createHooks.js'
+import renderer from './graphics/renderer.js'
+import { frameState, releaseKeys, currentState } from './input.js'
+import PlayerInput from '../common/PlayerInput.js'
 
-class GameClient {
-    constructor() {
-        this.client = new nengi.Client(nengiConfig, 100) 
-        this.simulator = new Simulator(this.client)
+const client = new nengi.Client(nengiConfig, 100)
 
-        this.client.onConnect(res => {
-            console.log('onConnect response:', res)
-        })
-
-        this.client.onClose(() => {
-            console.log('connection closed')
-        })
-
-        this.client.connect('ws://localhost:8079')       
-    }
-
-    update(delta, tick, now) {
-        const network = this.client.readNetwork()
-
-        network.entities.forEach(snapshot => {
-            snapshot.createEntities.forEach(entity => {
-                this.simulator.createEntity(entity)
-            })
-    
-            snapshot.updateEntities.forEach(update => {
-                this.simulator.updateEntity(update)
-            })
-    
-            snapshot.deleteEntities.forEach(id => {
-                this.simulator.deleteEntity(id)
-            })
-        })
-
-        network.predictionErrors.forEach(predictionErrorFrame => {
-            this.simulator.processPredictionError(predictionErrorFrame)
-        })
-
-        network.messages.forEach(message => {
-            this.simulator.processMessage(message)
-        })
-
-        network.localMessages.forEach(localMessage => {
-            this.simulator.processLocalMessage(localMessage)
-        })
-
-        this.simulator.update(delta)
-        this.client.update()
-    }
+const state = {
+    /* clientside state can go here */
+    myId: null,
+    myEntity: null
 }
 
-export default GameClient
+/* create hooks for any entity create, delete, and watch properties */
+clientHookAPI(client, createHooks(state))
+
+client.on('connected', res => { console.log('connection?:', res) })
+client.on('disconnected', () => { console.log('connection closed') })
+
+/* on('message::AnyMessage', msg => { }) */
+client.on('message::NetLog', message => {
+    console.log(`NetLog: ${ message.text }`)
+})
+
+client.on('message::Identity', message => {
+    state.myId = message.entityId
+})
+
+client.connect('ws://localhost:8079')
+
+const update = (delta, tick, now) => {
+    client.readNetworkAndEmit()
+
+    /* clientside logic can go here */
+    if (state.myEntity) {
+        const { up, down, left, right } = frameState
+        const { mouseX, mouseY } = currentState
+        const worldCoords = renderer.toWorldCoordinates(mouseX, mouseY)
+        const dx = worldCoords.x - state.myEntity.x
+        const dy = worldCoords.y - state.myEntity.y
+        const rotation = Math.atan2(dy, dx)
+        client.addCommand(new PlayerInput(up, down, left, right, rotation, delta))
+        renderer.centerCamera(state.myEntity)
+    }
+
+    renderer.update(delta)
+    client.update()
+    releaseKeys()
+}
+
+export {
+    update,
+    state
+}

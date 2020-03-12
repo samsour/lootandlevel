@@ -1,19 +1,19 @@
-import * as PIXI from 'pixi.js'
+import { Container, Graphics } from 'pixi.js'
 
-class BackgroundGrid extends PIXI.Container {
-    constructor()  {
+class BackgroundGrid extends Container {
+    constructor() {
         super()
 
-        for (var i = 0; i < 11; i++) {           
-            let line = new PIXI.Graphics()
+        for (let i = 0; i < 11; i++) {
+            let line = new Graphics()
             line.lineStyle(2, 0x333333)
             line.moveTo(i * 100, 0)
             line.lineTo(i * 100, 1000)
             this.addChild(line)
         }
 
-        for (var i = 0; i < 11; i++) {           
-            let line = new PIXI.Graphics()
+        for (let i = 0; i < 11; i++) {
+            let line = new Graphics()
             line.lineStyle(2, 0x333333)
             line.moveTo(0, i * 100)
             line.lineTo(1000, i * 100)
@@ -22,4 +22,4 @@ class BackgroundGrid extends PIXI.Container {
     }
 }
 
-export default BackgroundGrid;
+export default BackgroundGrid
