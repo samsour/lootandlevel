@@ -5,6 +5,10 @@ class Asteroid {
         this.x = 150
         this.y = 150
         this.rotation = 0
+        this.velocity = {
+            x: 0,
+            y: 0
+        }
     }
 }
 

@@ -3,7 +3,7 @@ import nengiConfig from '../common/nengiConfig.js'
 import instanceHookAPI from './instanceHookAPI.js'
 import NetLog from '../common/NetLog.js'
 import PlayerCharacter from '../common/PlayerCharacter.js'
-import Asteroid from '../common/Asteroid.js'
+import asteroidSystem from './asteroidSystem.js'
 import Identity from '../common/Identity.js'
 
 const instance = new nengi.Instance(nengiConfig, { port: 8079 })
@@ -11,6 +11,7 @@ instanceHookAPI(instance)
 
 /* serverside state here */
 const entities = new Map()
+asteroidSystem.populate(instance, 50);
 
 instance.on('connect', ({ client, callback }) => {
     /* client init logic & state can go here */
@@ -61,6 +62,7 @@ const update = (delta, tick, now) => {
         client.view.x = client.entity.x
         client.view.y = client.entity.y
     })
+    asteroidSystem.update(delta)
     instance.update()
 }
 

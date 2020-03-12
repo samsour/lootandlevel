@@ -1,24 +1,23 @@
 import Asteroid from '../common/Asteroid.js'
 
+const asteroids = new Map()
+
 const randomWithinRange = (min, max) => {
     return Math.random() * (max - min) + min
 }
-
-const asteroids = new Map()
 
 const spawnAsteroid = (instance) => {
     const asteroid = new Asteroid()
     asteroid.x = Math.random() * 1000
     asteroid.y = Math.random() * 1000
-    asteroid.velocity.x = randomWithinRange(-5, 5)
-    asteroid.velocity.y = randomWithinRange(-5, 5)
-    asteroid.rotation = randomWithinRange(-1, 1)
+    asteroid.velocity.x = randomWithinRange(-20, 20)
+    asteroid.velocity.y = randomWithinRange(-20, 20)
     instance.addEntity(asteroid)
     asteroids.set(asteroid.nid, asteroid)
 }
 
-const populate = (instance, howManyAsteroids) => {
-    for (let i = 0; i < howManyAsteroids; i++) {
+const populate = (instance, spawnRate) => {
+    for (let i = 0; i < spawnRate; i++) {
         spawnAsteroid(instance)
     }
 }
