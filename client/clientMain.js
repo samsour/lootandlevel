@@ -1,4 +1,3 @@
-
 import { update } from './gameClient.js'
 import renderer from './graphics/renderer.js'
 

@@ -1,4 +1,4 @@
-import Asteroid from '../common/Asteroid.js'
+import Asteroid from '../common/entities/Asteroid.js'
 
 const asteroids = new Map()
 
