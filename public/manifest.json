@@ -1,0 +1,21 @@
+{
+    "name": "Loot and Level Online",
+    "short_name": "Loot and Level",
+    "icons": [
+        {
+            "src": "./images/asteroid-small.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "./images/asteroid-small.png",
+            "type": "image/png",
+            "sizes": "512x512"
+          }
+    ],
+    "lang": "en-US",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "black",
+    "theme_color": "#000000"
+}
