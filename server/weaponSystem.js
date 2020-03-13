@@ -4,7 +4,6 @@ class WeaponSystem {
         this.cooldown = 0.5
         this.acc = 0
     }
-
     update(delta) {
         if (this.onCooldown) {
             this.acc += delta
@@ -14,7 +13,6 @@ class WeaponSystem {
             }
         }
     }
-
     fire() {
         if (!this.onCooldown) {
             this.onCooldown = true
@@ -23,5 +21,4 @@ class WeaponSystem {
         return false
     }
 }
-
 export default WeaponSystem;
