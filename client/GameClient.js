@@ -4,7 +4,7 @@ import clientHookAPI from './clientHookAPI.js'
 import createHooks from './hooks/createHooks.js'
 import renderer from './graphics/renderer.js'
 import { frameState, releaseKeys, currentState } from './input.js'
-import PlayerInput from '../common/PlayerInput.js'
+import PlayerInput from '../common/commands/PlayerInput.js'
 
 const client = new nengi.Client(nengiConfig, 100)
 
@@ -36,13 +36,17 @@ const update = (delta, tick, now) => {
 
     /* clientside logic can go here */
     if (state.myEntity) {
-        const { up, down, left, right } = frameState
+        const { up, down, left, right, mouseDown } = frameState
         const { mouseX, mouseY } = currentState
+
+        // calculate absolute position in world + rotation (of player and object)
         const worldCoords = renderer.toWorldCoordinates(mouseX, mouseY)
         const dx = worldCoords.x - state.myEntity.x
         const dy = worldCoords.y - state.myEntity.y
         const rotation = Math.atan2(dy, dx)
-        client.addCommand(new PlayerInput(up, down, left, right, rotation, delta))
+       
+        
+        client.addCommand(new PlayerInput(up, down, left, right, mouseDown, rotation, worldCoords.x, worldCoords.y, delta))
         renderer.centerCamera(state.myEntity)
     }
 

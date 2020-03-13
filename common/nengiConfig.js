@@ -1,9 +1,10 @@
 import nengi from 'nengi'
-import NetLog from './NetLog.js'
-import PlayerCharacter from './PlayerCharacter.js'
-import Asteroid from './Asteroid.js'
-import PlayerInput from './PlayerInput.js'
-import Identity from './Identity.js'
+import NetLog from './messages/NetLog.js'
+import PlayerCharacter from './entities/PlayerCharacter.js'
+import Asteroid from './entities/Asteroid.js'
+import PlayerInput from './commands/PlayerInput.js'
+import Identity from './messages/Identity.js'
+import Explosion from './entities/Explosion.js'
 
 const config = {
     UPDATE_RATE: 20, 
@@ -20,7 +21,8 @@ const config = {
     protocols: {
         entities: [
             ['PlayerCharacter', PlayerCharacter],
-            ['Asteroid', Asteroid]
+            ['Asteroid', Asteroid],
+            ['Explosion', Explosion]
         ],
         localMessages: [],
         messages: [
