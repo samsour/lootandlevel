@@ -8,11 +8,11 @@ class PlayerCharacter {
         this.name = "Display name";
         this.spaceShip = "goliath_t2";
         this.velocity = {
-            x: 10,
-            y: 10
+            x: 200,
+            y: 200
         }
         this.attackDamage = 10;
-        this.attackRate = 2; // times a second
+        this.attackRate = 10; // times a second
         this.level = 1;
         this.hitpoints = 100;
         this.shield = {
