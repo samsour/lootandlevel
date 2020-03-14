@@ -5,6 +5,8 @@ import Asteroid from './entities/Asteroid.js'
 import PlayerInput from './commands/PlayerInput.js'
 import Identity from './messages/Identity.js'
 import Explosion from './entities/Explosion.js'
+import Projectile from './entities/Projectile.js'
+
 
 const config = {
     UPDATE_RATE: 20, 
@@ -22,7 +24,8 @@ const config = {
         entities: [
             ['PlayerCharacter', PlayerCharacter],
             ['Asteroid', Asteroid],
-            ['Explosion', Explosion]
+            ['Explosion', Explosion],
+            ['Projectile', Projectile],
         ],
         localMessages: [],
         messages: [
