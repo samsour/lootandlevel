@@ -7,6 +7,7 @@ import { frameState, releaseKeys, currentState } from './input.js'
 import PlayerInput from '../common/commands/PlayerInput.js'
 
 const client = new nengi.Client(nengiConfig, 100)
+client.connect('ws://localhost:8079')
 
 const state = {
     /* clientside state can go here */
@@ -29,8 +30,13 @@ client.on('message::Identity', message => {
     state.myId = message.entityId
 })
 
-client.connect('ws://localhost:8079')
 
+/**
+ * Game loop that contains the clientside game logic
+ * @param {number} delta - time difference between the previous frame that was drawn and the current frame
+ * @param {number} tick - how many game loops are done so far
+ * @param {Date.now} now - represents the current time as a number
+ */
 const update = (delta, tick, now) => {
     client.readNetworkAndEmit()
 
