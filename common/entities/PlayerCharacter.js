@@ -12,7 +12,7 @@ class PlayerCharacter {
             y: 200
         }
         this.attackDamage = 10;
-        this.attackRate = 10; // times a second
+        this.attackRate = 2; // times a second
         this.level = 1;
         this.hitpoints = 100;
         this.shield = {
