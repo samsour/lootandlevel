@@ -97,7 +97,7 @@ const update = (delta, tick, now) => {
 
     // update asteroid system
     asteroidSystem.update(delta)
-    projectileSystem.update(delta)
+    projectileSystem.update(instance, now, delta)
 
     /* serversode logic end */
     instance.update()
