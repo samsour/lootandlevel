@@ -7,9 +7,6 @@ class Projectile {
         this.rotation = entity.rotation;
         this.speed = 400;
 
-        // missile velocity isnt calculated correctly
-        // this.rotation = RAD not DEG
-        console.log(this.rotation);
         this.velocity = {
             x: this.speed * Math.cos(this.rotation),
             y: this.speed * Math.sin(this.rotation),
