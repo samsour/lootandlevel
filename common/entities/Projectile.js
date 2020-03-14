@@ -4,11 +4,11 @@ class Projectile {
     constructor(entity) {
         this.x = entity.x;
         this.y = entity.y;
-        console.log(entity.rotation);
         this.rotation = entity.rotation;
+        this.speed = 300;
         this.velocity = {
-            x: 10,
-            y: 10
+            x: this.speed * Math.cos(this.rotation),
+            y: this.speed * Math.sin(this.rotation),
         }
         this.origin = entity.nid; // player id
         this.type = "bullet"; // or rocket
