@@ -6,6 +6,7 @@ import PlayerCharacter from '../common/entities/PlayerCharacter.js'
 import asteroidSystem from './asteroidSystem.js'
 import Identity from '../common/messages/Identity.js'
 import Explosion from '../common/entities/Explosion.js'
+import Projectile from '../common/entities/Projectile.js'
 import WeaponSystem from './weaponSystem.js'
 
 const instance = new nengi.Instance(nengiConfig, { port: 8079 })
@@ -65,13 +66,13 @@ instance.on('command::PlayerInput', ({ command, client }) => {
     }
 
     if (mouseDown && client.weaponSystem.fire()){
-        const explosion = new Explosion()
-        explosion.x = mouseX
-        explosion.y = mouseY
-        instance.addEntity(explosion)
+        const bullet = new Projectile(entity)
+        bullet.x = mouseX
+        bullet.y = mouseY
+        instance.addEntity(bullet)
         setTimeout(()=>{
-            instance.removeEntity(explosion)
-        },250)
+            instance.removeEntity(bullet)
+        }, bullet.timeToLive)
     }
     
     entity.rotation = rotation
