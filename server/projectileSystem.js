@@ -16,7 +16,7 @@ const update = (delta) => {
 
         // move bullet
         projectile.x += delta * projectile.velocity.x;
-        projectile.y -= delta * projectile.velocity.y;
+        projectile.y += delta * projectile.velocity.y;
 
         // handle collision
     })

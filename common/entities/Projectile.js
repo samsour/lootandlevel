@@ -12,7 +12,7 @@ class Projectile {
         console.log(this.rotation);
         this.velocity = {
             x: this.speed * Math.cos(this.rotation),
-            y: this.speed * Math.sin(Math.abs(this.rotation)),
+            y: this.speed * Math.sin(this.rotation),
         }
         this.origin = entity.nid; // player id
         this.type = "bullet"; // or rocket
