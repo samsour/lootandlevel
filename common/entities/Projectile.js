@@ -5,10 +5,14 @@ class Projectile {
         this.x = entity.x;
         this.y = entity.y;
         this.rotation = entity.rotation;
-        this.speed = 300;
+        this.speed = 400;
+
+        // missile velocity isnt calculated correctly
+        // this.rotation = RAD not DEG
+        console.log(this.rotation);
         this.velocity = {
             x: this.speed * Math.cos(this.rotation),
-            y: this.speed * Math.sin(this.rotation),
+            y: this.speed * Math.sin(Math.abs(this.rotation)),
         }
         this.origin = entity.nid; // player id
         this.type = "bullet"; // or rocket
