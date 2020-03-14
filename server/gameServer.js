@@ -33,7 +33,7 @@ instance.on('connect', ({ client, callback }) => {
         halfHeight: 1000
     }
     // instanciate an own weaponSystem (handling cooldowns) for each player
-    client.weaponSystem = new WeaponSystem()
+    client.weaponSystem = new WeaponSystem(entity.attackRate)
 })
 
 instance.on('disconnect', client => {

@@ -1,7 +1,7 @@
 class WeaponSystem {
-    constructor() {
+    constructor(attackRate) {
+        this.cooldown = 1 / attackRate
         this.onCooldown = false
-        this.cooldown = 0.5
         this.acc = 0
     }
     update(delta) {
