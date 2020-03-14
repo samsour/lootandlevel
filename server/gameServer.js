@@ -4,8 +4,8 @@ import instanceHookAPI from './instanceHookAPI.js'
 import NetLog from '../common/messages/NetLog.js'
 import PlayerCharacter from '../common/entities/PlayerCharacter.js'
 import asteroidSystem from './asteroidSystem.js'
+import projectileSystem from './projectileSystem.js'
 import Identity from '../common/messages/Identity.js'
-import Explosion from '../common/entities/Explosion.js'
 import Projectile from '../common/entities/Projectile.js'
 import WeaponSystem from './weaponSystem.js'
 
@@ -51,31 +51,28 @@ instance.on('disconnect', client => {
 instance.on('command::PlayerInput', ({ command, client }) => {
     const { up, down, left, right, mouseDown, mouseX, mouseY, rotation, delta } = command
     const { entity } = client
-    const speed = 200
+    
     if (up) {
-        entity.y -= speed * delta
+        entity.y -= entity.velocity.y * delta
     }
     if (down) {
-        entity.y += speed * delta
+        entity.y += entity.velocity.y * delta
     }
     if (left) {
-        entity.x -= speed * delta
+        entity.x -= entity.velocity.x * delta
     }
     if (right) {
-        entity.x += speed * delta
+        entity.x += entity.velocity.x * delta
     }
 
-    if (mouseDown && client.weaponSystem.fire()){
+    entity.rotation = rotation
+
+    // create bullet and add to global projectile system
+    if (mouseDown && client.weaponSystem.fire()) {
         const bullet = new Projectile(entity)
-        bullet.x = mouseX
-        bullet.y = mouseY
-        instance.addEntity(bullet)
-        setTimeout(()=>{
-            instance.removeEntity(bullet)
-        }, bullet.timeToLive)
+        projectileSystem.spawnProjectile(instance, bullet)
     }
     
-    entity.rotation = rotation
 })
 
 /**
@@ -100,6 +97,7 @@ const update = (delta, tick, now) => {
 
     // update asteroid system
     asteroidSystem.update(delta)
+    projectileSystem.update(delta)
 
     /* serversode logic end */
     instance.update()
