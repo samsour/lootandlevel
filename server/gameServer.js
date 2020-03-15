@@ -1,4 +1,5 @@
 import nengi from 'nengi'
+import SAT from 'sat'
 import nengiConfig from '../common/nengiConfig.js'
 import instanceHookAPI from './instanceHookAPI.js'
 import NetLog from '../common/messages/NetLog.js'
@@ -23,6 +24,7 @@ instance.on('connect', ({ client, callback }) => {
 
     // create new PlayerCharacter
     const entity = new PlayerCharacter()
+
     instance.addEntity(entity)
     instance.message(new Identity(entity.nid), client)
     entities.set(entity.nid, entity)
@@ -53,18 +55,22 @@ instance.on('command::PlayerInput', ({ command, client }) => {
     const { entity } = client
     
     if (up) {
-        entity.y -= entity.velocity.y * delta
+        entity.y -= entity.velocity.y * delta;
+        entity.collider.pos.y = entity.y
     }
     if (down) {
         entity.y += entity.velocity.y * delta
+        entity.collider.pos.y = entity.y
     }
     if (left) {
         entity.x -= entity.velocity.x * delta
+        entity.collider.pos.x = entity.x
     }
     if (right) {
         entity.x += entity.velocity.x * delta
+        entity.collider.pos.x = entity.x
     }
-
+    
     entity.rotation = rotation
 
     // create bullet and add to global projectile system

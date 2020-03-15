@@ -1,4 +1,5 @@
 import nengi from 'nengi'
+import SAT from 'sat'
 
 class PlayerCharacter {
     constructor() {
@@ -19,17 +20,12 @@ class PlayerCharacter {
             hitpoints: 100,
             efficiency: 0.25
         }
-        // this.drones = []; // add helper drones to gather ressources or make extra dmg
-        // this.storage = {
-        //     capacity: 100,
-        //     items: [
-        //         {
-        //             id: 6,
-        //             name: 'Iridium', // optional
-        //             quantity: 25
-        //         }
-        //     ]
-        // }
+
+        this.collider = new SAT.Polygon(new SAT.Vector(), [
+            new SAT.Vector(),
+            new SAT.Vector(100,0),
+            new SAT.Vector(50,75)
+        ]);
     }
 }
 
