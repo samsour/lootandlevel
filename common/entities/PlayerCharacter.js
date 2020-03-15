@@ -44,8 +44,7 @@ PlayerCharacter.protocol = {
     attackRate: nengi.Number,
     hitpoints: nengi.Float32,
     'shield.hitpoints': nengi.Float32,
-    'shield.effitiency': nengi.Float32,
-    
+    'shield.efficiency': nengi.Float32,
 }
 
 export default PlayerCharacter
