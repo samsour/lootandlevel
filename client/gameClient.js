@@ -7,7 +7,12 @@ import { frameState, releaseKeys, currentState } from './input.js'
 import PlayerInput from '../common/commands/PlayerInput.js'
 
 const client = new nengi.Client(nengiConfig, 100)
-client.connect('ws://localhost:8079')
+let serverAdress = 'ws://62.75.139.27:8079';
+if (process.env.NODE_ENV == 'development') {
+    serverAdress = 'ws://localhost:8001'
+}
+console.info("Connect to Server at:", serverAdress);
+client.connect(serverAdress)
 
 const state = {
     /* clientside state can go here */

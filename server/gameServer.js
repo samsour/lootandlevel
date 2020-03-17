@@ -9,7 +9,11 @@ import Identity from '../common/messages/Identity.js'
 import Projectile from '../common/entities/Projectile.js'
 import WeaponSystem from './weaponSystem.js'
 
-const instance = new nengi.Instance(nengiConfig, { port: 8079 })
+let port = 8001;
+if (process.env.NODE_ENV == 'development') {
+    port = 8079;
+}
+const instance = new nengi.Instance(nengiConfig, { port: port })
 instanceHookAPI(instance)
 
 /* serverside state here */
@@ -18,8 +22,7 @@ asteroidSystem.populate(instance, 50);
 
 instance.on('connect', ({ client, callback }) => {
     /* client init logic & state */
-    callback({ accepted: true, text: 'Welcome!' })
-    instance.message(new NetLog('hello world'), client)
+    callback({ accepted: true, text: 'Welcome!' });
 
     // create new PlayerCharacter
     const entity = new PlayerCharacter()
