@@ -1,14 +1,16 @@
 import nengi from 'nengi'
+var SAT = require('sat');
 
 class Asteroid {
-    constructor() {
-        this.x = 150
-        this.y = 150
+    constructor(x,y) {
+        this.x = x
+        this.y = y
         this.rotation = 0
         this.velocity = {
             x: 0,
             y: 0
         }
+        this.hitbox = new SAT.Circle(new SAT.Vector(x,y), 16);
     }
 }
 

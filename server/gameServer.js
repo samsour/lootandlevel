@@ -14,7 +14,7 @@ instanceHookAPI(instance)
 
 /* serverside state here */
 const entities = new Map()
-asteroidSystem.populate(instance, 50);
+asteroidSystem.populate(instance, 7);
 
 instance.on('connect', ({ client, callback }) => {
     /* client init logic & state */
