@@ -1,5 +1,5 @@
 import nengi from 'nengi'
-var SAT = require('sat');
+import SAT from 'sat'
 
 class Asteroid {
     constructor(x,y) {
@@ -10,7 +10,7 @@ class Asteroid {
             x: 0,
             y: 0
         }
-        this.hitbox = new SAT.Circle(new SAT.Vector(x,y), 16);
+        this.hitbox = SAT.Circle(new SAT.Vector(x,y), 8);
     }
 }
 
