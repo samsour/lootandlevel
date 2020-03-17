@@ -24,7 +24,12 @@ instance.on('connect', ({ client, callback }) => {
 
     // create new PlayerCharacter
     const entity = new PlayerCharacter()
-
+    entity.collider = new SAT.Polygon(new SAT.Vector(), [
+        new SAT.Vector(),
+        new SAT.Vector(-100,100),
+        new SAT.Vector(100,100)
+    ]);
+    
     instance.addEntity(entity)
     instance.message(new Identity(entity.nid), client)
     entities.set(entity.nid, entity)
@@ -71,7 +76,8 @@ instance.on('command::PlayerInput', ({ command, client }) => {
         entity.collider.pos.x = entity.x
     }
     
-    entity.rotation = rotation
+    entity.collider.rotation = rotation;
+    entity.rotation = rotation;
 
     // create bullet and add to global projectile system
     if (mouseDown && client.weaponSystem.fire()) {

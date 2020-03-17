@@ -23,8 +23,8 @@ class PlayerCharacter {
 
         this.collider = new SAT.Polygon(new SAT.Vector(), [
             new SAT.Vector(),
-            new SAT.Vector(100,0),
-            new SAT.Vector(50,75)
+            new SAT.Vector(-100,100),
+            new SAT.Vector(100,100)
         ]);
     }
 }
@@ -40,7 +40,7 @@ PlayerCharacter.protocol = {
     attackRate: nengi.Number,
     hitpoints: nengi.Float32,
     'shield.hitpoints': nengi.Float32,
-    'shield.effitiency': nengi.Float32,
+    'shield.efficiency': nengi.Float32,
     
 }
 

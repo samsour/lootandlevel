@@ -4,8 +4,6 @@ class Player extends Container {
     constructor(entity) {
         super()
 
-        console.log(entity)
-
         const sprite = Sprite.from('/images/ship.png')
         sprite.scale.set(3, 3)
         sprite.anchor.set(0.5, 0.5)
@@ -13,9 +11,13 @@ class Player extends Container {
         this.addChild(sprite)
         
         const hitbox = new Graphics();
-        const polyPts = [0,0,100,100,-1000,100];
-        hitbox.beginFill(0xffffff);
-        hitbox.drawPolygon(polyPts);
+        let polygonPoints = [];
+        entity.collider.points.forEach(vector => {
+            polygonPoints = polygonPoints.concat(Object.values(vector))
+        })
+        console.log(polygonPoints)
+        hitbox.beginFill(0xff0000);
+        hitbox.drawPolygon(polygonPoints);
         hitbox.endFill();
         this.addChild(hitbox)
     }
