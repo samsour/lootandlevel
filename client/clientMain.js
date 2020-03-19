@@ -2,8 +2,6 @@ import { update } from './gameClient.js'
 import renderer from './graphics/renderer.js'
 
 window.onload = function() {
-    console.log('window loaded')
-
     renderer.init()
 
     let tick = 0

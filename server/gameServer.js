@@ -9,11 +9,7 @@ import Identity from '../common/messages/Identity.js'
 import Projectile from '../common/entities/Projectile.js'
 import WeaponSystem from './weaponSystem.js'
 
-let port = 8001;
-if (process.env.NODE_ENV == 'development') {
-    port = 8079;
-}
-const instance = new nengi.Instance(nengiConfig, { port: port })
+const instance = new nengi.Instance(nengiConfig, { port: 8001 })
 instanceHookAPI(instance)
 
 /* serverside state here */
