@@ -18,19 +18,7 @@ class Projectile {
         this.timeToLive = 2000 // game ticks
         this.friendlyFire = false; // also hits team members
     }
-
-    /**
-     * Returns angle between two points in degree
-     * @param {*} p1
-     * @param {*} p2
-     * 
-     * @return {number}
-     */
-    getRotation(p1, p2) {
-        return Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
-    }
 }
-
 
 Projectile.protocol = {
     x: { type: nengi.Number, interp: true },
@@ -38,12 +26,12 @@ Projectile.protocol = {
     rotation: { type: nengi.RotationFloat32, interp: true },
     'velocity.x': { type: nengi.Number, interp: true },
     'velocity.y': { type: nengi.Number, interp: true },
-    origin: { type: nengi.UInt16, interp: true },
-    type: { type: nengi.String, interp: true },
+    origin: { type: nengi.UInt16 },
+    type: { type: nengi.String },
     damage: { type: nengi.Number, interp: true },
-    absoluteDamage: { type: nengi.Boolean, interp: true },
-    timeToLive: { type: nengi.Number, interp: true },
-    friendlyFire: { type: nengi.Boolean, interp: true }
+    absoluteDamage: { type: nengi.Boolean },
+    timeToLive: { type: nengi.UInt32, interp: true },
+    friendlyFire: { type: nengi.Boolean }
 }
 
 export default Projectile
