@@ -35,16 +35,16 @@ class PlayerCharacter {
 
 PlayerCharacter.protocol = {
     name: nengi.String,
-    x: { type: nengi.Number, interp: true },
-    y: { type: nengi.Number, interp: true },
+    x: { type: nengi.Float32, interp: true },
+    y: { type: nengi.Float32, interp: true },
     rotation: { type: nengi.RotationFloat32, interp: true },
-    'velocity.x': nengi.Number,
-    'velocity.y': nengi.Number,
-    attackDamage: nengi.Number,
-    attackRate: nengi.Number,
-    hitpoints: nengi.Float32,
-    'shield.hitpoints': nengi.Float32,
-    'shield.efficiency': nengi.Float32,
+    'velocity.x': { type: nengi.Float32, interp: true },
+    'velocity.y': { type: nengi.Float32, interp: true },
+    attackDamage: { type: nengi.Float32, interp: true },
+    attackRate: { type: nengi.Float32, interp: true },
+    hitpoints: { type: nengi.Float32, interp: true },
+    'shield.hitpoints': { type: nengi.Float32, interp: true },
+    'shield.efficiency': { type: nengi.Float32, interp: true },
 }
 
 export default PlayerCharacter

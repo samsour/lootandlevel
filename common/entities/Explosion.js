@@ -9,8 +9,8 @@ class Explosion {
 }
 
 Explosion.protocol = {
-    x: { type: nengi.Number, interp: true },
-    y: { type: nengi.Number, interp: true },
+    x: { type: nengi.Float32, interp: true },
+    y: { type: nengi.Float32, interp: true },
     rotation: { type: nengi.RotationFloat32, interp: true }
 }
 
