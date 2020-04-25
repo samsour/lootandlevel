@@ -7,7 +7,7 @@ import { frameState, releaseKeys, currentState } from './input.js'
 import PlayerInput from '../common/commands/PlayerInput.js'
 
 const client = new nengi.Client(nengiConfig, 100)
-let serverAdress = 'ws://localhost:8001';
+let serverAdress = 'ws://62.75.139.27:8001';
 if (process.env.NODE_ENV == 'development') {
     serverAdress = 'ws://localhost:8001'
 }

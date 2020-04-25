@@ -69,12 +69,7 @@ module.exports = {
 
     plugins: [
         // Clean dist folder
-        new CleanWebpackPlugin({
-            cleanStaleWebpackAssets: false,
-            cleanOnceBeforeBuildPatterns: () => {
-                return ['**/*'];
-            },
-        }),
+        new CleanWebpackPlugin(),
         // Copy assets that are not processed by webpack bundling
         new CopyPlugin([
             { from: 'src/client/assets', to: 'assets' },

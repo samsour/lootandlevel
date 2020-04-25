@@ -1,6 +1,6 @@
 {
   "name": "lootandlevel",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "loot and level, a (massively) multiplayer online bullethell role playing browsergame",
   "scripts": {
     "start": "npx npm-run-all --parallel server client",
@@ -29,6 +29,7 @@
     "webpack": "4.41.1",
     "webpack-cli": "3.3.9",
     "webpack-dev-server": "3.8.2",
-    "webpack-merge": "4.2.2"
+    "webpack-merge": "4.2.2",
+    "webpack-node-externals": "^1.7.2"
   }
 }
