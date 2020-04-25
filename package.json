@@ -1,6 +1,6 @@
 {
   "name": "lootandlevel",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "loot and level, a (massively) multiplayer online bullethell role playing browsergame",
   "scripts": {
     "start": "npx npm-run-all --parallel server client",
