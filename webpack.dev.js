@@ -5,8 +5,8 @@ const common = require('./webpack.common.js')
 module.exports = merge(common, {
     mode: 'development',
     devServer: {
-        contentBase: path.join(__dirname, './public'),
-        publicPath: 'http://localhost:8080/js/',
+        contentBase: path.join(__dirname, 'src', 'client'),
+        publicPath: 'http://localhost:8080/',
         compress: true,
         port: 8080
     }

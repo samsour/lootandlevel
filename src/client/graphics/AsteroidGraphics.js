@@ -1,9 +1,10 @@
 import { Container, Sprite } from 'pixi.js'
-class ExplosionGraphics extends Container {
+
+class AsteroidGraphics extends Container {
     constructor() {
         super()
 
-        const sprite = Sprite.from('/images/exp.png')
+        const sprite = Sprite.from('/assets/images/asteroid-small.png')
         sprite.scale.set(3, 3)
         sprite.anchor.set(0.5, 0.5)
         sprite.rotation = 0.5 * Math.PI
@@ -11,4 +12,4 @@ class ExplosionGraphics extends Container {
     }
 }
 
-export default ExplosionGraphics
+export default AsteroidGraphics
