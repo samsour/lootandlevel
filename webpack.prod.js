@@ -1,8 +1,7 @@
-const merge = require('webpack-merge')
-const common = require('./webpack.common.js')
-const TerserPlugin = require('terser-webpack-plugin')
-const path = require('path')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const merge = require('webpack-merge');
+const common = require('./webpack.common.js');
+const TerserPlugin = require('terser-webpack-plugin');
+const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = [
@@ -25,10 +24,11 @@ module.exports = [
             path: path.resolve(__dirname, 'dist', 'server')
         },
 
-        externals: [nodeExternals()],
+        
+        optimization: {
+            minimizer: [new TerserPlugin()],
+        },
 
-        // optimization: {
-        //     minimizer: [new TerserPlugin()],
-        // }
+        externals: [nodeExternals()]
     }
 ]
