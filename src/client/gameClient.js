@@ -5,10 +5,10 @@ import createHooks from './hooks/createHooks.js'
 import renderer from './graphics/renderer.js'
 import { frameState, releaseKeys, currentState } from './input.js'
 import PlayerInput from '../common/commands/PlayerInput.js'
-import ChatUI from './chatUI.js';
+import ChatUI from './ChatUI.js';
 
 const client = new nengi.Client(nengiConfig, 100)
-let serverAdress = 'ws://localhost:8001';
+let serverAdress = 'wss://lootandlevel.samsour.de:8001';
 if (process.env.NODE_ENV == 'development') {
     serverAdress = 'ws://localhost:8001'
 }
