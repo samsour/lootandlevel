@@ -15,12 +15,15 @@ if (process.env.NODE_ENV == 'development') {
 console.info("Connect to Server at:", serverAdress);
 client.connect(serverAdress)
 
-const chatUI = new ChatUI({
+const chat = new ChatUI({
     apiUrl: 'https://ccs.maier-niklas.de/api/v1',
     selector: '.js-chat',
     username: 'samsour',
     password: 'qwer'
 });
+setTimeout(() => {
+    chat.joinRoom()
+}, 500)
 
 const state = {
     /* clientside state can go here */

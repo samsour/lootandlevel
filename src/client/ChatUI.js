@@ -17,15 +17,23 @@ class ChatUI {
         this.initEventListeners();
     }
 
+    joinRoom(room = 1) {
+        if (this.chatRoom === null || this.chatRoom !== room) {
+            console.join(room);
+        }
+    }
+
     initEventListeners() {
         window.addEventListener('receiveMessages', this.receiveMessages.bind(this));
 
         this.submit.addEventListener("click", this.submitMessage.bind(this));
+
         this.input.addEventListener("focus", () => {
             if (this.chatRoom === null) {
                 console.join(1);
             }
         })
+
         document.addEventListener("keydown", event => {
             if (event.keyCode === 13) {
                 if(event.srcElement !== this.input) {
@@ -49,32 +57,38 @@ class ChatUI {
             }
             
             console.chat(message.message);
-            this.printMessage(this.buildChatMessage(message));
+            this.printMessage(message);
             this.input.value = "";
-            this.input.blur();
         }
+        this.input.blur();
     }
 
     receiveMessages(event) {
         const messages = event.detail.messages;
         if (messages.length > 0) {
             messages.forEach(message => {
-                this.printMessage(this.buildChatMessage(message));
+                this.printMessage(message);
             })
         }
     }
 
-    buildChatMessage(message) {
-        const date = new Date(message.created_at);
-
-        return `<span class="chat__message-time">${date.getHours()}:${date.getMinutes()}</span> ${message.user.username}: ${message.message}`;
+    getCombinedElement(node = 'div', content = '', cssClass = '', escape = true) {
+        console.log(node, content, cssClass, escape);
+        const element = document.createElement(node);
+        console.log(element);
+        cssClass.length > 0 ? element.classList.add(cssClass) : null;
+        escape ? element.textContent = content : element.innerHTML = content;
+        return element;
     }
 
-    printMessage(text) {
-        const li = document.createElement('li');
-        li.classList.add('chat__message');
-        li.innerHTML = text;
-        this.messages.append(li);
+    printMessage(message) {
+        const date = new Date(message.created_at);
+        const time = this.getCombinedElement('span', `${date.getHours()}:${date.getMinutes()}`, 'chat__message-time');
+        const username = this.getCombinedElement('span', message.user.username);
+        const text = this.getCombinedElement('span', message.message);
+
+        const chatMessage = this.getCombinedElement('li', `${time.outerHTML} ${username.outerHTML}: ${text.outerHTML}`, 'chat__message', false);
+        this.messages.append(chatMessage);
     }
 }
 
