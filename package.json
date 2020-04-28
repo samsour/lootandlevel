@@ -11,6 +11,7 @@
   "author": "samsour",
   "license": "Apache 2.0",
   "dependencies": {
+    "console-chat-client": "^0.1.2",
     "esm": "3.2.25",
     "nengi": "1.13.1",
     "pixi.js": "5.1.5"

@@ -5,14 +5,22 @@ import createHooks from './hooks/createHooks.js'
 import renderer from './graphics/renderer.js'
 import { frameState, releaseKeys, currentState } from './input.js'
 import PlayerInput from '../common/commands/PlayerInput.js'
+import ChatUI from './chatUI.js';
 
 const client = new nengi.Client(nengiConfig, 100)
-let serverAdress = 'ws://62.75.139.27:8001';
+let serverAdress = 'ws://localhost:8001';
 if (process.env.NODE_ENV == 'development') {
     serverAdress = 'ws://localhost:8001'
 }
 console.info("Connect to Server at:", serverAdress);
 client.connect(serverAdress)
+
+const chatUI = new ChatUI({
+    apiUrl: 'https://ccs.maier-niklas.de/api/v1',
+    selector: '.js-chat',
+    username: 'samsour',
+    password: 'qwer'
+});
 
 const state = {
     /* clientside state can go here */
