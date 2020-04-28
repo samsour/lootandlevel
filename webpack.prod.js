@@ -10,25 +10,5 @@ module.exports = [
         optimization: {
             minimizer: [new TerserPlugin()],
         }
-    }),
-    {
-        mode: 'development',
-
-        target: "node",
-
-        entry: [
-            path.resolve(__dirname, 'src', 'server', 'serverMain.js')
-        ],
-
-        output: {
-            path: path.resolve(__dirname, 'dist', 'server')
-        },
-
-        
-        optimization: {
-            minimizer: [new TerserPlugin()],
-        },
-
-        externals: [nodeExternals()]
-    }
+    })
 ]
